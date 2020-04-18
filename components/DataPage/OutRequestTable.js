@@ -2,11 +2,11 @@ import { Table, Input, Button, Icon, Card, Divider, Dropdown, Menu, Row } from '
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { MoreVertical, Edit, Trash, PlusCircle } from 'react-feather';
-import EditData from '../Datas/Requests/EditData';
-import AssignMember from '../Datas/Requests/AssignMember';
+import EditData from '../Datas/OutRequests/EditData';
+import AssignMember from '../Datas/OutRequests/AssignMember';
 import { deleteOutRequest } from '../../redux/actions';
 import Rater from '../Rating/Rater';
-import SetTimeSchedule from '../Datas/Requests/SetTimeSchedule';
+import SetTimeSchedule from '../Datas/OutRequests/SetTimeSchedule';
 
 class RequestTable extends Component {
 	state = {
