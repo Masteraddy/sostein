@@ -74,8 +74,6 @@ const handler = (req, res, db) => {
 								transporter.sendMail(mailOption3, (err, response) => {
 									if (err) {
 										console.log(err);
-									} else {
-										res.status(200).json({ success: true, data: 'Email sent successfully' });
 									}
 								});
 							}
@@ -119,8 +117,6 @@ const handler = (req, res, db) => {
 						transporter.sendMail(mailOption2, (err, response) => {
 							if (err) {
 								console.log(err);
-							} else {
-								res.status(200).json({ success: true, data: 'Email sent successfully' });
 							}
 						});
 						cron.scheduleJob(newdate, () => {

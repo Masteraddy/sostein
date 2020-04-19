@@ -57,15 +57,13 @@ const handler = (req, res, db) => {
 								const mailOption3 = {
 									from: 'No-Reply Sostein',
 									to: `${req.body.email}`,
-									subject: `Alert: A Work Order with Name "${requests.name}"`,
+									subject: `Alert: A Work Order with from The Name "${requests.fullname}"`,
 									html: `<p>This is to notify you about a work order been assigned to you.</p>
 							<p>It has a description <b>${requests.description}</b> Kindly login to your account to check it out.</p><b>Thank You</b>`,
 								};
 								transporter.sendMail(mailOption3, (err, response) => {
 									if (err) {
 										console.log(err);
-									} else {
-										res.status(200).json({ success: true, data: 'Email sent successfully' });
 									}
 								});
 							}
@@ -93,7 +91,7 @@ const handler = (req, res, db) => {
 						const mailOption1 = {
 							from: 'Noreply Sostein',
 							to: `${req.body.email}`,
-							subject: `Alert On The Job ${ans.name}`,
+							subject: `Alert On The Job ${ans.description}`,
 							html: `<p>This is to notify you about a work order you are to finish within some hours
 						please kindly ignore this message if you have finished it.</p>
 						<p>Please log on to your account to check if you've done the work assigned to you. It has a description <b>${ans.description}</b> </p>
@@ -102,15 +100,13 @@ const handler = (req, res, db) => {
 						const mailOption2 = {
 							from: 'Noreply Sostein',
 							to: `${req.body.email}`,
-							subject: `Alert On The Job ${ans.name}`,
+							subject: `Alert On The Job ${ans.description}`,
 							html: `<p>This is to notify you about a work order you just scheduled for ${date.toDateString()}.</p>
 							<p>It has a description <b>${ans.description}</b> </p><b>Thank You</b>`,
 						};
 						transporter.sendMail(mailOption2, (err, response) => {
 							if (err) {
 								console.log(err);
-							} else {
-								res.status(200).json({ success: true, data: 'Email sent successfully' });
 							}
 						});
 						cron.scheduleJob(newdate, () => {
