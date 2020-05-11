@@ -205,7 +205,7 @@ export const addOutRequest = (body, user) => (dispatch) => {
   const token = getCookie('token');
   dispatch(inProgress());
   axios
-    .put(`${URL}/api/request`, body, {
+    .post(`${URL}/api/requests/out`, body, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
