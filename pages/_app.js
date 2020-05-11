@@ -113,6 +113,10 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   const token = getCookie('token', ctx.req);
   const id = getCookie('intd', ctx.req);
   // let datas;
+  if (Routes === '/request') {
+    var users = await getUsersLocal(hostname, token);
+    ctx.store.dispatch({ type: 'USERSINFO', payload: users });
+  }
   const services = await getServicesLocal(hostname);
   const propert = await getPropertLocal(hostname);
   ctx.store.dispatch({ type: 'GET_SERVICES', payload: services });
@@ -150,10 +154,6 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
         Routes === '/contact' ||
         Routes === '/request'
       ) {
-        if (Routes === '/request') {
-          var users = await getUsersLocal(hostname, token);
-          ctx.store.dispatch({ type: 'USERSINFO', payload: users });
-        }
         console.log(!isNotDashboard, Routes);
       } else {
         {
