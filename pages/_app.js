@@ -150,6 +150,10 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
         Routes === '/contact' ||
         Routes === '/request'
       ) {
+        if (Routes === '/request') {
+          var users = await getUsersLocal(hostname, token);
+          ctx.store.dispatch({ type: 'USERSINFO', payload: users });
+        }
         console.log(!isNotDashboard, Routes);
       } else {
         {
